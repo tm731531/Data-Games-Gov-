@@ -1,10 +1,46 @@
 C:\Users\tm731\Documents\Visual Studio 2015\Projects\ConsoleApplication2\Gov\bin\Debug\ConsoleApplication2.exe.config
-C:\Users\tm731\Documents\Visual Studio 2015\Projects\ConsoleApplication2\Gov\obj\Debug\ConsoleApplication2.exe
-C:\Users\tm731\Documents\Visual Studio 2015\Projects\ConsoleApplication2\Gov\obj\Debug\ConsoleApplication2.pdb
 C:\Users\tm731\Documents\Visual Studio 2015\Projects\ConsoleApplication2\Gov\bin\Debug\ConsoleApplication2.exe
 C:\Users\tm731\Documents\Visual Studio 2015\Projects\ConsoleApplication2\Gov\bin\Debug\ConsoleApplication2.pdb
 C:\Users\tm731\Documents\Visual Studio 2015\Projects\ConsoleApplication2\Gov\bin\Debug\Dapper.dll
+C:\Users\tm731\Documents\Visual Studio 2015\Projects\ConsoleApplication2\Gov\bin\Debug\DapperPlus.dll
+C:\Users\tm731\Documents\Visual Studio 2015\Projects\ConsoleApplication2\Gov\bin\Debug\ECPay.Payment.Integration.dll
+C:\Users\tm731\Documents\Visual Studio 2015\Projects\ConsoleApplication2\Gov\bin\Debug\HtmlAgilityPack.dll
 C:\Users\tm731\Documents\Visual Studio 2015\Projects\ConsoleApplication2\Gov\bin\Debug\Newtonsoft.Json.dll
 C:\Users\tm731\Documents\Visual Studio 2015\Projects\ConsoleApplication2\Gov\bin\Debug\Dapper.xml
+C:\Users\tm731\Documents\Visual Studio 2015\Projects\ConsoleApplication2\Gov\bin\Debug\DapperPlus.xml
+C:\Users\tm731\Documents\Visual Studio 2015\Projects\ConsoleApplication2\Gov\bin\Debug\HtmlAgilityPack.pdb
+C:\Users\tm731\Documents\Visual Studio 2015\Projects\ConsoleApplication2\Gov\bin\Debug\HtmlAgilityPack.xml
 C:\Users\tm731\Documents\Visual Studio 2015\Projects\ConsoleApplication2\Gov\bin\Debug\Newtonsoft.Json.xml
-C:\Users\tm731\Documents\Visual Studio 2015\Projects\ConsoleApplication2\Gov\obj\Debug\Gov.csprojResolveAssemblyReference.cache
+C:\Users\tm731\Documents\Visual Studio 2015\Projects\ConsoleApplication2\Gov\obj\Debug\ConsoleApplication2.exe
+C:\Users\tm731\Documents\Visual Studio 2015\Projects\ConsoleApplication2\Gov\obj\Debug\ConsoleApplication2.pdb
+G:\ConsoleApplication2\Gov\bin\Debug\ConsoleApplication2.exe.config
+G:\ConsoleApplication2\Gov\obj\Debug\ConsoleApplication2.exe
+G:\ConsoleApplication2\Gov\obj\Debug\ConsoleApplication2.pdb
+G:\ConsoleApplication2\Gov\bin\Debug\ConsoleApplication2.exe
+G:\ConsoleApplication2\Gov\bin\Debug\ConsoleApplication2.pdb
+G:\ConsoleApplication2\Gov\bin\Debug\Dapper.dll
+G:\ConsoleApplication2\Gov\bin\Debug\DapperPlus.dll
+G:\ConsoleApplication2\Gov\bin\Debug\ECPay.Payment.Integration.dll
+G:\ConsoleApplication2\Gov\bin\Debug\HtmlAgilityPack.dll
+G:\ConsoleApplication2\Gov\bin\Debug\Newtonsoft.Json.dll
+G:\ConsoleApplication2\Gov\bin\Debug\Dapper.xml
+G:\ConsoleApplication2\Gov\bin\Debug\DapperPlus.xml
+G:\ConsoleApplication2\Gov\bin\Debug\HtmlAgilityPack.pdb
+G:\ConsoleApplication2\Gov\bin\Debug\HtmlAgilityPack.xml
+G:\ConsoleApplication2\Gov\bin\Debug\Newtonsoft.Json.xml
+D:\Csharp\ConsoleApplication2\Gov\bin\Debug\ConsoleApplication2.exe.config
+D:\Csharp\ConsoleApplication2\Gov\obj\Debug\ConsoleApplication2.exe
+D:\Csharp\ConsoleApplication2\Gov\obj\Debug\ConsoleApplication2.pdb
+D:\Csharp\ConsoleApplication2\Gov\bin\Debug\ConsoleApplication2.exe
+D:\Csharp\ConsoleApplication2\Gov\bin\Debug\ConsoleApplication2.pdb
+D:\Csharp\ConsoleApplication2\Gov\bin\Debug\Dapper.dll
+D:\Csharp\ConsoleApplication2\Gov\bin\Debug\DapperPlus.dll
+D:\Csharp\ConsoleApplication2\Gov\bin\Debug\ECPay.Payment.Integration.dll
+D:\Csharp\ConsoleApplication2\Gov\bin\Debug\HtmlAgilityPack.dll
+D:\Csharp\ConsoleApplication2\Gov\bin\Debug\Newtonsoft.Json.dll
+D:\Csharp\ConsoleApplication2\Gov\bin\Debug\Dapper.xml
+D:\Csharp\ConsoleApplication2\Gov\bin\Debug\DapperPlus.xml
+D:\Csharp\ConsoleApplication2\Gov\bin\Debug\HtmlAgilityPack.pdb
+D:\Csharp\ConsoleApplication2\Gov\bin\Debug\HtmlAgilityPack.xml
+D:\Csharp\ConsoleApplication2\Gov\bin\Debug\Newtonsoft.Json.xml
+D:\Csharp\ConsoleApplication2\Gov\obj\Debug\Gov.csprojResolveAssemblyReference.cache

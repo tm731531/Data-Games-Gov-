@@ -22,7 +22,8 @@ INSERT INTO[dbo].[GovData]
            ,[Id]
            ,[login_number]
            ,[detailUri]
-           ,[efficiency_rating])
+           ,[efficiency_rating]
+           ,[key_word])
      VALUES
            (@product_model
            ,@brand_name
@@ -35,7 +36,8 @@ INSERT INTO[dbo].[GovData]
            ,@Id
            ,@login_number
            ,@detailUri
-           ,@efficiency_rating)";
+           ,@efficiency_rating
+           ,@key_word)";
 
         public static string insertPchomeData = @"
 INSERT INTO [dbo].[PchomePrice]
@@ -43,13 +45,17 @@ INSERT INTO [dbo].[PchomePrice]
            ,[name]
            ,[originprice]
            ,[pics]
-           ,[picb])
+           ,[picb]
+,[key_word]
+,[data_from])
      VALUES
            (@Id
            ,@name
            ,@originprice
            ,@pics
-           ,@picb)";
+           ,@picb
+,@key_word
+,@data_from)";
 
         public static string insertMixData = @"
 INSERT INTO [dbo].[MixGovPcData]
@@ -68,7 +74,10 @@ INSERT INTO [dbo].[MixGovPcData]
            ,[picb]
            ,[login_number]
            ,[detailUri]
-           ,[efficiency_rating])
+           ,[efficiency_rating]
+        ,[key_word]
+,[Pchome_Id]
+,[data_from])
      VALUES
            (@product_model
            ,@brand_name
@@ -85,6 +94,9 @@ INSERT INTO [dbo].[MixGovPcData]
            ,@picb
            ,@login_number
            ,@detailUri
-           ,@efficiency_rating)";
+           ,@efficiency_rating
+            ,@key_word
+            ,@Pchome_Id
+,@data_from)";
     }
 }

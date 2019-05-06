@@ -37,6 +37,17 @@
       <HintPath>..\packages\Dapper.1.60.6\lib\net451\Dapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="DapperPlus, Version=1.1.0.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DapperPlus.1.1.0.2\lib\net45\DapperPlus.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ECPay.Payment.Integration">
+      <HintPath>.\ECPay.Payment.Integration.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.11.4.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.11.4\lib\Net45\HtmlAgilityPack.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -52,16 +63,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\DBMethod.cs" />
+    <Compile Include="Common\response.cs" />
     <Compile Include="Const.cs" />
-    <Compile Include="PriceStruct.cs" />
+    <Compile Include="Common\PriceStruct.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Data\Price\Momo\冷暖空調.json" />
+    <None Include="Data\Gov\冰溫熱型開飲機Tag.json" />
+    <None Include="Data\Gov\冰溫熱型飲水機Tag.json" />
+    <None Include="Data\Gov\溫熱型飲水機Tag.json" />
+    <None Include="Data\Gov\除濕機Tag.json" />
+    <None Include="Data\Gov\溫熱型開飲機Tag.json" />
+    <None Include="Data\Gov\電冰箱Tag.json" />
+    <None Include="Data\Gov\電熱水瓶Tag.json" />
+    <None Include="Data\Price\Momo\冰溫熱型開飲機.json" />
+    <None Include="Data\Price\Momo\冰溫熱型飲水機.json" />
+    <None Include="Data\Price\Momo\溫熱型開飲機.json" />
+    <None Include="Data\Price\Momo\溫熱型飲水機.json" />
+    <None Include="Data\Price\Momo\除濕機.json" />
+    <None Include="Data\Price\Momo\電冰箱.json" />
+    <None Include="Data\Price\Momo\電熱水瓶.json" />
     <None Include="packages.config" />
-    <None Include="Pchome.json" />
-    <None Include="Tag.json" />
+    <None Include="Data\Price\Pchome\Pchome.json" />
+    <None Include="Data\Gov\冷暖空調Tag.json" />
+    <None Include="TALK.json" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
