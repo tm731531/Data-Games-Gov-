@@ -19,7 +19,8 @@ namespace ConsoleApplication2.Method
         private static string GovDataUrl = "https://ranking.energylabel.org.tw/product/Approval/upt.aspx?pageno=10&key2=&key=&con=0&pprovedateA=&pprovedateB=&approvedateA=&approvedateB=&Type=48&comp=0&RANK=0&refreA=0&refreB=0&condiA=0&condiB=0&HDA=0&HDB=0&SWHA=0&SWHB=0&p0={0}&id={1}";
         private static object o = new object();
 
-        internal static void Pchome() {
+        internal static void Pchome()
+        {
             foreach (var key_word in FillJsonDic())
             {
                 //CurlPchomeData(key_word).Wait();
@@ -103,59 +104,63 @@ namespace ConsoleApplication2.Method
         private static void LoadData(string key_word, string data_from = null)
         {
             System.Net.Http.HttpClient ht = new System.Net.Http.HttpClient();
-            var pchomeItems = new PriceStruct.PcHome();
             var momoItems = new PriceStruct.PcHome();
             var tagItems = new PriceStruct.Tags();
             var joinItems = new List<PriceStruct.JoinProduct>();
+
+            int count = 0;
+            using (StreamReader r = new StreamReader(FillJsonDic(data_from)[key_word]))
             {
-                int count = 0;
-                using (StreamReader r = new StreamReader(FillJsonDic(data_from)[key_word]))
+                var json = r.ReadToEnd();
+                momoItems = JsonConvert.DeserializeObject<PcHome>(json);
+                foreach (var a in momoItems.product)
                 {
-                    var json = r.ReadToEnd();
-                    momoItems = JsonConvert.DeserializeObject<PcHome>(json);
-                    foreach (var a in momoItems.product)
-                    {
-                        a.key_word = key_word;
-                        a.data_from = data_from;
-                    }
-                    DBMethod.BulkDapperInsert(momoItems.product);
-                    Console.WriteLine($"Done {data_from}");
-                    Console.WriteLine($"{ momoItems.product.Count()}");
+                    a.key_word = key_word;
+                    a.data_from = data_from;
                 }
-
-
-                var pchomeData = DBMethod.BulkDapperSearch<PchomePrice>($" SELECT  * FROM PchomePrice where key_word =N'{key_word}'"
-                     );
-                Console.WriteLine($"{data_from}  / { pchomeData.Count()}");
-
-                using (StreamReader r = new StreamReader(FillJsonDic()[key_word]))
-                {
-                    var json = r.ReadToEnd();
-                    tagItems = JsonConvert.DeserializeObject<PriceStruct.Tags>(json);
-                    var ttB = new PriceStruct.TagsToDBProduct();
-                    Console.WriteLine($"Gov { tagItems.product.Count()}");
-                }
-                foreach (var item in tagItems.product)
-                {
-                    var objectData = momoItems.product.Where(x => x.name.Contains(item.product_model)).Select(x => x).FirstOrDefault();
-                    if (objectData != null)
-                    {
-                        CheckCount(ref count);
-                        joinItems.Add(FillAllData(item, objectData, key_word, data_from));
-                    }
-                }
-
-                DBMethod.BulkDapperInsert(joinItems);
-                Console.WriteLine($"{ joinItems.Count()}");
+                DBMethod.BulkDapperInsert(momoItems.product);
+                Console.WriteLine($"Done {data_from}");
+                Console.WriteLine($"{ momoItems.product.Count()}");
             }
+
+
+            var pchomeData = DBMethod.BulkDapperSearch<PchomePrice>($" SELECT  * FROM PchomePrice where key_word =N'{key_word}'"
+                 );
+            Console.WriteLine($"{data_from}  / { pchomeData.Count()}");
+            var ttB = new List<TagsToDBProduct>();
+
+            using (StreamReader r = new StreamReader(FillJsonDic()[key_word]))
+            {
+                tagItems = JsonConvert.DeserializeObject<Tags>(r.ReadToEnd());
+                foreach (var data in tagItems.product)
+                {
+                    ttB.Add(ConvertToDB(data, key_word));
+                }
+                Console.WriteLine($"Gov { tagItems.product.Count()}");
+            }
+            DBMethod.BulkDapperInsert(ttB);
+            foreach (var item in tagItems.product)
+            {
+                var objectData = momoItems.product.Where(x => x.name.Contains(item.product_model)).Select(x => x).FirstOrDefault();
+                if (objectData != null)
+                {
+                    CheckCount(ref count);
+                    joinItems.Add(FillAllData(item, objectData, key_word, data_from));
+                }
+            }
+
+            DBMethod.BulkDapperInsert(joinItems);
+            Console.WriteLine($"{ joinItems.Count()}");
+
 
         }
         private static void CheckCount(ref int count)
         {
-            lock (o) { 
-            count++;
-            if (count % 10 == 0) { Console.WriteLine($"{(count / 10) * 10}筆資料進入"); };
-        }
+            lock (o)
+            {
+                count++;
+                if (count % 10 == 0) { Console.WriteLine($"{(count / 10) * 10}筆資料進入"); };
+            }
         }
         private static Dictionary<string, string> FillJsonDic(string mode = null)
         {
@@ -257,7 +262,28 @@ namespace ConsoleApplication2.Method
                 Console.WriteLine(e.Message);
             }
         }
+        private static TagsToDBProduct ConvertToDB(TagsProduct item, string key_word)
+        {
+            var returnModel = new TagsToDBProduct();
 
-       
+            returnModel.annual_power_consumption_degrees_dive_year = item.annual_power_consumption_degrees_dive_year;
+            returnModel.detailUri = item.detailUri;
+            returnModel.brand_name = item.brand_name;
+            returnModel.efficiency_benchmark = item.efficiency_benchmark;
+            returnModel.efficiency_rating = item.efficiency_rating;
+            returnModel.from_date_of_expiration = item.from_date_of_expiration;
+            returnModel.Id = item.Id;
+            returnModel.labeling_company = item.labeling_company;
+            returnModel.login_number = item.login_number;
+            returnModel.product_model = item.product_model;
+            returnModel.test_report_of_energy_efficiency =
+            //(item.test_report_of_energy_efficiency).ToString();
+            JsonConvert.SerializeObject(item.test_report_of_energy_efficiency);
+            returnModel.key_word = key_word;
+
+            return returnModel;
+        }
+
+
     }
 }
