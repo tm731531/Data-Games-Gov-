@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApplication2
 {
-    class Const
+    class SqlConst
     {
 
         public static string insertGovData = @"

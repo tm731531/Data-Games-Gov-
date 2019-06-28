@@ -23,29 +23,45 @@ namespace ConsoleApplication2
         public string PchomeTable = "PchomePrice";
         public string GovTable = "GovData";
         public string MixTable = "MixGovPcData";
-         public static string GovDataUrl = "https://ranking.energylabel.org.tw/product/Approval/upt.aspx?pageno=10&key2=&key=&con=0&pprovedateA=&pprovedateB=&approvedateA=&approvedateB=&Type=48&comp=0&RANK=0&refreA=0&refreB=0&condiA=0&condiB=0&HDA=0&HDB=0&SWHA=0&SWHB=0&p0={0}&id={1}";
         static void Main(string[] args)
-        {
-            if (args.Length < 2) { Console.WriteLine("參數不完整"); return; }
 
-            if (args[0].ToUpper() == "LOAD")
-            {
-                switch (args[1].ToUpper())
-                {
-                    case "PCHOME":
-                        CurlData.Pchome();
-                        break;
-                    case "MOMO":
-                        CurlData.Momo();
-                        break;
-                    default:
-                        break;
-                }
-            }
-            else
-            {
-                CurlData.GovData(args[0], args[1], args[2], args[3]);
-            }
+        {
+            CurlData.LoadData("冰溫熱型開飲機", "PCHOME");
+            CurlData.LoadData("冰溫熱型飲水機", "PCHOME");
+            CurlData.LoadData("冷暖空調", "PCHOME");
+            CurlData.LoadData("除濕機", "PCHOME");
+            CurlData.LoadData("溫熱型開飲機", "PCHOME");
+            CurlData.LoadData("溫熱型飲水機", "PCHOME");
+            CurlData.LoadData("電冰箱", "PCHOME");
+            CurlData.LoadData("電熱水瓶", "PCHOME");
+            CurlData.LoadData("冰溫熱型開飲機", "MOMO");
+            CurlData.LoadData("冰溫熱型飲水機", "MOMO");
+            CurlData.LoadData("冷暖空調", "MOMO");
+            CurlData.LoadData("除濕機", "MOMO");
+            CurlData.LoadData("溫熱型開飲機", "MOMO");
+            CurlData.LoadData("溫熱型飲水機", "MOMO");
+            CurlData.LoadData("電冰箱", "MOMO");
+            CurlData.LoadData("電熱水瓶", "MOMO");
+            //if (args.Length < 2) { Console.WriteLine("參數不完整"); return; }
+
+            //if (args[0].ToUpper() == "LOAD")
+            //{
+            //    switch (args[1].ToUpper())
+            //    {
+            //        case "PCHOME":
+            //            CurlData.Pchome();
+            //            break;
+            //        case "MOMO":
+            //            CurlData.Momo();
+            //            break;
+            //        default:
+            //            break;
+            //    }
+            //}
+            //else
+            //{
+            //    CurlData.GovData(args[0], args[1], args[2], args[3]);
+            //}
             Console.WriteLine("Done");
             Console.ReadLine();
         }
@@ -203,27 +219,6 @@ namespace ConsoleApplication2
             }
 
 
-        }
-        private static PriceStruct.TagsToDBProduct ConvertToDB(PriceStruct.TagsProduct item, string key_word)
-        {
-            var returnModel = new PriceStruct.TagsToDBProduct();
-
-            returnModel.annual_power_consumption_degrees_dive_year = item.annual_power_consumption_degrees_dive_year;
-            returnModel.detailUri = item.detailUri;
-            returnModel.brand_name = item.brand_name;
-            returnModel.efficiency_benchmark = item.efficiency_benchmark;
-            returnModel.efficiency_rating = item.efficiency_rating;
-            returnModel.from_date_of_expiration = item.from_date_of_expiration;
-            returnModel.Id = item.Id;
-            returnModel.labeling_company = item.labeling_company;
-            returnModel.login_number = item.login_number;
-            returnModel.product_model = item.product_model;
-            returnModel.test_report_of_energy_efficiency =
-            //(item.test_report_of_energy_efficiency).ToString();
-            JsonConvert.SerializeObject(item.test_report_of_energy_efficiency);
-            returnModel.key_word = key_word;
-
-            return returnModel;
         }
         private static async Task CurlGovData(KeyValuePair<string, string> key_word)
         {

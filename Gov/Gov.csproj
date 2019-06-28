@@ -52,6 +52,10 @@
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="SqlSugar, Version=4.9.9.10, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\sqlSugar.4.9.9.10\lib\SqlSugar.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -65,8 +69,10 @@
   <ItemGroup>
     <Compile Include="Common\DBMethod.cs" />
     <Compile Include="Common\response.cs" />
-    <Compile Include="Const.cs" />
+    <Compile Include="Common\SqlConst.cs" />
     <Compile Include="Common\PriceStruct.cs" />
+    <Compile Include="Common\SugarTest.cs" />
+    <Compile Include="Method\CurlData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -87,8 +93,15 @@
     <None Include="Data\Price\Momo\除濕機.json" />
     <None Include="Data\Price\Momo\電冰箱.json" />
     <None Include="Data\Price\Momo\電熱水瓶.json" />
+    <None Include="Data\Price\Pchome\冰溫熱型開飲機.json" />
+    <None Include="Data\Price\Pchome\冰溫熱型飲水機.json" />
+    <None Include="Data\Price\Pchome\溫熱型開飲機.json" />
+    <None Include="Data\Price\Pchome\溫熱型飲水機.json" />
+    <None Include="Data\Price\Pchome\除濕機.json" />
+    <None Include="Data\Price\Pchome\電冰箱.json" />
+    <None Include="Data\Price\Pchome\電熱水瓶.json" />
     <None Include="packages.config" />
-    <None Include="Data\Price\Pchome\Pchome.json" />
+    <None Include="Data\Price\Pchome\冷暖空調.json" />
     <None Include="Data\Gov\冷暖空調Tag.json" />
     <None Include="TALK.json" />
   </ItemGroup>

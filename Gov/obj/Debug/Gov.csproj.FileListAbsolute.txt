@@ -44,3 +44,4 @@ D:\Csharp\ConsoleApplication2\Gov\bin\Debug\HtmlAgilityPack.pdb
 D:\Csharp\ConsoleApplication2\Gov\bin\Debug\HtmlAgilityPack.xml
 D:\Csharp\ConsoleApplication2\Gov\bin\Debug\Newtonsoft.Json.xml
 D:\Csharp\ConsoleApplication2\Gov\obj\Debug\Gov.csprojResolveAssemblyReference.cache
+D:\Csharp\ConsoleApplication2\Gov\bin\Debug\SqlSugar.dll

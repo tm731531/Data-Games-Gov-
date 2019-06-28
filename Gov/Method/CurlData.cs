@@ -101,33 +101,21 @@ namespace ConsoleApplication2.Method
 
             }
         }
-        private static void LoadData(string key_word, string data_from = null)
+        internal static void LoadData(string key_word, string data_from = null)
         {
-            System.Net.Http.HttpClient ht = new System.Net.Http.HttpClient();
-            var momoItems = new PriceStruct.PcHome();
-            var tagItems = new PriceStruct.Tags();
-            var joinItems = new List<PriceStruct.JoinProduct>();
+            var momoItems = new PcHome();
+            var tagItems = new Tags();
+            var ttB = new List<GovData>();
+            var joinItems = new List<MixGovPcData>();
 
             int count = 0;
-            using (StreamReader r = new StreamReader(FillJsonDic(data_from)[key_word]))
-            {
-                var json = r.ReadToEnd();
-                momoItems = JsonConvert.DeserializeObject<PcHome>(json);
-                foreach (var a in momoItems.product)
-                {
-                    a.key_word = key_word;
-                    a.data_from = data_from;
-                }
-                DBMethod.BulkDapperInsert(momoItems.product);
-                Console.WriteLine($"Done {data_from}");
-                Console.WriteLine($"{ momoItems.product.Count()}");
-            }
+            FillDataToObject(ref momoItems, key_word, data_from);
+            DBMethod.BulkDapperInsert(momoItems.product);
 
 
             var pchomeData = DBMethod.BulkDapperSearch<PchomePrice>($" SELECT  * FROM PchomePrice where key_word =N'{key_word}'"
                  );
             Console.WriteLine($"{data_from}  / { pchomeData.Count()}");
-            var ttB = new List<TagsToDBProduct>();
 
             using (StreamReader r = new StreamReader(FillJsonDic()[key_word]))
             {
@@ -138,7 +126,7 @@ namespace ConsoleApplication2.Method
                 }
                 Console.WriteLine($"Gov { tagItems.product.Count()}");
             }
-            DBMethod.BulkDapperInsert(ttB);
+          //  DBMethod.BulkDapperInsert(ttB);
             foreach (var item in tagItems.product)
             {
                 var objectData = momoItems.product.Where(x => x.name.Contains(item.product_model)).Select(x => x).FirstOrDefault();
@@ -154,6 +142,24 @@ namespace ConsoleApplication2.Method
 
 
         }
+
+        private static void FillDataToObject(ref PcHome momoItems, string key_word, string data_from)
+        {
+            using (StreamReader r = new StreamReader(FillJsonDic(data_from)[key_word]))
+            {
+                var json = r.ReadToEnd();
+                momoItems = JsonConvert.DeserializeObject<PcHome>(json);
+                foreach (var a in momoItems.product)
+                {
+                    a.key_word = key_word;
+                    a.data_from = data_from;
+                }
+                Console.WriteLine($"Done {data_from}");
+                Console.WriteLine($"{ momoItems.product.Count()}");
+            }
+
+        }
+
         private static void CheckCount(ref int count)
         {
             lock (o)
@@ -194,14 +200,21 @@ namespace ConsoleApplication2.Method
             else if (mode.ToUpper() == "PCHOME")
             {
                 string path = "D:\\Csharp\\ConsoleApplication2\\Gov\\Data\\Price\\Pchome\\";
+                lisVal["溫熱型開飲機"] = $"{path}溫熱型開飲機.json";
+                lisVal["電冰箱"] = $"{path}電冰箱.json";
+                lisVal["電熱水瓶"] = $"{path}電熱水瓶.json";
+                lisVal["除濕機"] = $"{path}除濕機.json";
                 lisVal["冷暖空調"] = $"{path}冷暖空調.json";
+                lisVal["溫熱型飲水機"] = $"{path}溫熱型飲水機.json";
+                lisVal["冰溫熱型開飲機"] = $"{path}冰溫熱型開飲機.json";
+                lisVal["冰溫熱型飲水機"] = $"{path}冰溫熱型飲水機.json";
             }
             return lisVal;
         }
 
-        private static PriceStruct.JoinProduct FillAllData(PriceStruct.TagsProduct item, PriceStruct.PchomePrice objectData, string key_word, string data_from)
+        private static PriceStruct.MixGovPcData FillAllData(PriceStruct.TagsProduct item, PriceStruct.PchomePrice objectData, string key_word, string data_from)
         {
-            var joinProduct = new PriceStruct.JoinProduct();
+            var joinProduct = new PriceStruct.MixGovPcData();
 
             joinProduct.annual_power_consumption_degrees_dive_year = item.annual_power_consumption_degrees_dive_year;
             joinProduct.detailUri = item.detailUri;
@@ -262,9 +275,9 @@ namespace ConsoleApplication2.Method
                 Console.WriteLine(e.Message);
             }
         }
-        private static TagsToDBProduct ConvertToDB(TagsProduct item, string key_word)
+        private static GovData ConvertToDB(TagsProduct item, string key_word)
         {
-            var returnModel = new TagsToDBProduct();
+            var returnModel = new GovData();
 
             returnModel.annual_power_consumption_degrees_dive_year = item.annual_power_consumption_degrees_dive_year;
             returnModel.detailUri = item.detailUri;

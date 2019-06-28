@@ -25,22 +25,22 @@ namespace ConsoleApplication2.Common
             connect.Close();
         }
 
-        public static void BulkDapperInsert(List<PriceStruct.TagsToDBProduct> data)
+        public static void BulkDapperInsert(List<GovData> data)
         {
             connect.Open();
-            connect.InsertBulk<PriceStruct.TagsToDBProduct>(data);
+            connect.InsertBulk<GovData>(data);
             connect.Close();
         }
-        public static void BulkDapperInsert(List<PriceStruct.JoinProduct> data)
+        public static void BulkDapperInsert(List<MixGovPcData> data)
         {
             connect.Open();
-            connect.InsertBulk<PriceStruct.JoinProduct>(data);
+            connect.InsertBulk<MixGovPcData>(data);
             connect.Close();
         }
-        public static void BulkDapperInsert(List<PriceStruct.TempData> data)
+        public static void BulkDapperInsert(List<TempData> data)
         {
             connect.Open();
-            connect.InsertBulk<PriceStruct.TempData>(data);
+            connect.InsertBulk<TempData>(data);
             connect.Close();
         }
         public static List<T> BulkDapperSearch<T>(string query)

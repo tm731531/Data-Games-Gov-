@@ -39,6 +39,7 @@ namespace ConsoleApplication2
             public string hot_water_system_storage_tank_capacity_indication_value { get; set; }
             public string warm_water_system_storage_tank_capacity_indication_value { get; set; }
             public string ice_water_system_storage_tank_capacity_indication_value { get; set; }
+            public string effective_internal_volume { get; set; }
             
         }
 
@@ -59,7 +60,7 @@ namespace ConsoleApplication2
          }
 
 
-        public class TagsToDBProduct
+        public class GovData
         {
             public string Id { get; set; }
             public string product_model { get; set; }
@@ -75,7 +76,7 @@ namespace ConsoleApplication2
             public string annual_power_consumption_degrees_dive_year { get; set; }
             public string key_word { get; set; }
         }
-        public class JoinProduct: TagsToDBProduct
+        public class MixGovPcData: GovData
         {
             public string name { get; set; }
             public int originprice { get; set; }
